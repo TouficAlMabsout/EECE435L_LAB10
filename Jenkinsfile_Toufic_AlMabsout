@@ -34,9 +34,10 @@ pipeline {
         stage('Coverage') {
             steps {
                 script {
-                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && coverage run -m pytest"
-                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && coverage report"
-                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && coverage html" // Generates HTML report
+                     // Use the full path to the coverage executable
+                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && .\\${VIRTUAL_ENV}\\Scripts\\coverage run -m pytest"
+                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && .\\${VIRTUAL_ENV}\\Scripts\\coverage report"
+                    bat ".\\${VIRTUAL_ENV}\\Scripts\\activate && .\\${VIRTUAL_ENV}\\Scripts\\coverage html"
                 }
             }
         }
